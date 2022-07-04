@@ -11,6 +11,7 @@ public class MaterialBuilder implements ArmorMaterial {
 	int defense, durability, enchValue;
 	float toughness, resistance;
 	ItemStack repair;
+	public String name;
 
 	public MaterialBuilder(int defense, int durability, int enchValue, float toughness, float resistance,
 			ItemStack repair) {
@@ -21,6 +22,7 @@ public class MaterialBuilder implements ArmorMaterial {
 		this.toughness = toughness;
 		this.resistance = resistance;
 		this.repair = repair;
+		this.name = "";
 	}
 
 	@Override
@@ -56,7 +58,7 @@ public class MaterialBuilder implements ArmorMaterial {
 	@Override
 	public String getName() {
 
-		return "adm_material";
+		return name;
 	}
 
 	@Override

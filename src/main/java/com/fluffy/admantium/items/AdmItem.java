@@ -2,7 +2,6 @@ package com.fluffy.admantium.items;
 
 import java.util.Random;
 
-import com.fluffy.admantium.util.TextComponent;
 import com.fluffy.admantium.util.TooltipHandler;
 
 import net.minecraft.core.BlockPos;
@@ -14,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
-public abstract class AdmItem extends Item {
+public abstract class AdmItem extends Item implements IToolTip {
 
 	public AdmItem(Properties properties) {
 		super(properties);
@@ -30,7 +29,11 @@ public abstract class AdmItem extends Item {
 
 	public abstract boolean useRandomPower();
 
-	public abstract TextComponent getHighlightedDescription();
+	@Override
+	public Item get() {
+		// TODO Auto-generated method stub
+		return this;
+	}
 
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {

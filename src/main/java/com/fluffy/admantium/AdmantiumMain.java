@@ -1,15 +1,27 @@
 package com.fluffy.admantium;
 
+import java.util.function.Supplier;
+
 import org.slf4j.Logger;
 
 import com.fluffy.admantium.items.AdmantiumShard;
+import com.fluffy.admantium.items.item.CalciteCrown;
+import com.fluffy.admantium.util.ADMMaterial;
 import com.fluffy.admantium.util.ClickHandler;
+import com.fluffy.admantium.util.DataGen;
+import com.fluffy.admantium.util.MaterialBuilder;
 import com.fluffy.admantium.util.TooltipHandler;
 import com.fluffy.admantium.util.UsageHandler;
 import com.fluffy.admantium.util.VersionInfo;
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -37,6 +49,7 @@ public class AdmantiumMain {
 	public static final VersionInfo version = AdmantiumMain.getVersionInfo(VersionInfo.TESTING);
 
 	public AdmantiumMain() {
+		// DataGen.initKeys();
 		TooltipHandler.createHandler();
 		UsageHandler.createHandler();
 		ClickHandler.createHandler();
@@ -89,7 +102,18 @@ public class AdmantiumMain {
 		return info;
 	}
 
+	public static RegistryObject<Item> registerItem(String name, Supplier<Item> itm) {
+		DataGen.addFull(itm.get(), name);
+		return ITEMS.register(name, itm);
+	}
+
 	public static final RegistryObject<Item> ADMANTIUM_SHARD = ITEMS.register("admantium_shard",
 			() -> new AdmantiumShard());
+	public static final RegistryObject<Item> MITIUM_CRYSTAL = ITEMS.register("mitium_crystal",
+			() -> new AdmantiumShard());
+	public static final RegistryObject<ArmorItem> CALCITE_CROEN = ITEMS.register("calcite_crown",
+			() -> new CalciteCrown(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC), EquipmentSlot.HEAD,
+					ADMMaterial.ADMANTIUM, new MaterialBuilder(0, 0, 0, 0, 0, new ItemStack(Items.CALCITE)),
+					"calcite_crown"));
 
 }

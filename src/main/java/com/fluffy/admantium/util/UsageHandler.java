@@ -6,6 +6,7 @@ import java.util.List;
 import com.fluffy.admantium.AdmantiumMain;
 import com.fluffy.admantium.items.AdmArmor;
 
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,12 +33,21 @@ public class UsageHandler {
 		if (!REGISTERED.isEmpty())
 			for (int i = 0; i < REGISTERED.size(); i++) {
 				stack = new ItemStack(REGISTERED.get(i));
-				while (event.player.getArmorSlots().iterator().hasNext()) {
-					ItemStack stack2 = event.player.getArmorSlots().iterator().next();
-					if (stack2.getItem() == stack.getItem()) {
-						((AdmArmor) stack.getItem()).whenWorn(event.player, stack);
-
-					}
+				if (event.player.hasItemInSlot(EquipmentSlot.HEAD)
+						&& event.player.getItemBySlot(EquipmentSlot.HEAD).getItem() == REGISTERED.get(i)) {
+					REGISTERED.get(i).whenWorn(event.player, stack);
+				}
+				if (event.player.hasItemInSlot(EquipmentSlot.CHEST)
+						&& event.player.getItemBySlot(EquipmentSlot.CHEST).getItem() == REGISTERED.get(i)) {
+					REGISTERED.get(i).whenWorn(event.player, stack);
+				}
+				if (event.player.hasItemInSlot(EquipmentSlot.LEGS)
+						&& event.player.getItemBySlot(EquipmentSlot.LEGS).getItem() == REGISTERED.get(i)) {
+					REGISTERED.get(i).whenWorn(event.player, stack);
+				}
+				if (event.player.hasItemInSlot(EquipmentSlot.FEET)
+						&& event.player.getItemBySlot(EquipmentSlot.FEET).getItem() == REGISTERED.get(i)) {
+					REGISTERED.get(i).whenWorn(event.player, stack);
 				}
 			}
 	}

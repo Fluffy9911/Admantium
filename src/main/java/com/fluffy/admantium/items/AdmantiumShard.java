@@ -35,7 +35,7 @@ public class AdmantiumShard extends AdmItem {
 	@Override
 	public boolean useRandomPower() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class AdmantiumShard extends AdmItem {
 			@Override
 			public String getText() {
 				// TODO Auto-generated method stub
-				return " Powerful shard of pure Admantium!";
+				return "Powerful shard of pure Admantium!";
 			}
 
 			@Override
@@ -60,8 +60,9 @@ public class AdmantiumShard extends AdmItem {
 
 	@Override
 	public void blockRightClicked(Block b, Player p, Level l, BlockPos pos) {
-		System.out.println("hey!");
-		l.setBlock(pos, Blocks.DIAMOND_BLOCK.defaultBlockState(), 7);
+		if (b == Blocks.DIRT) {
+			l.setBlock(pos, Blocks.GOLD_BLOCK.defaultBlockState(), 1);
+		}
 
 	}
 

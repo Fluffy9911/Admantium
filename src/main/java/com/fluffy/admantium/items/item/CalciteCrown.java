@@ -1,9 +1,10 @@
-package com.fluffy.admantium;
+package com.fluffy.admantium.items.item;
 
 import com.fluffy.admantium.items.AdmArmor;
 import com.fluffy.admantium.util.ADMMaterial;
 import com.fluffy.admantium.util.MaterialBuilder;
 import com.fluffy.admantium.util.TextComponent;
+import com.fluffy.admantium.util.UsageHandler;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -12,17 +13,13 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
-public class AdmArmorTest extends AdmArmor {
+public class CalciteCrown extends AdmArmor {
 
-	public AdmArmorTest(Properties properties, EquipmentSlot ec, ADMMaterial mat, MaterialBuilder builder) {
+	public CalciteCrown(Properties properties, EquipmentSlot ec, ADMMaterial mat, MaterialBuilder builder,
+			String name) {
 		super(properties, ec, mat, builder);
-		this.registerWorn();
-	}
-
-	@Override
-	public void whenWorn(Player p, ItemStack stack) {
-		p.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 5000, 5000));
-
+		UsageHandler.registerUsage(this);
+		builder.name = name;
 	}
 
 	@Override
@@ -33,16 +30,21 @@ public class AdmArmorTest extends AdmArmor {
 			@Override
 			public String getText() {
 				// TODO Auto-generated method stub
-				return "Test Armor";
+				return "Crown of pure calcite, little to no properties";
 			}
 
 			@Override
 			public ChatFormatting getColor() {
 				// TODO Auto-generated method stub
-				return ChatFormatting.DARK_RED;
+				return ChatFormatting.WHITE;
 			}
 
 		};
+	}
+
+	@Override
+	public void whenWorn(Player p, ItemStack stack) {
+		p.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 1, 1));
 	}
 
 }
