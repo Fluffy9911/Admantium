@@ -117,7 +117,7 @@ public class AdmantiumMain {
 	// BLOCKS.register("mitium_plant",
 	// () -> new MitiumPlant(Block.Properties.of(Material.PLANT).randomTicks()));
 
-	public static final RegistryObject<ArmorItem> CALCITE_CROEN = ITEMS.register("calcite_crown",
+	public static final RegistryObject<ArmorItem> CALCITE_CROWN = ITEMS.register("calcite_crown",
 			() -> new CalciteCrown(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC), EquipmentSlot.HEAD,
 					ADMMaterial.ADMANTIUM, new MaterialBuilder(0, 0, 0, 0, 0, new ItemStack(Items.CALCITE)),
 					"calcite_crown"));
