@@ -4,7 +4,6 @@ import java.util.function.Supplier;
 
 import org.slf4j.Logger;
 
-import com.fluffy.admantium.blocks.MitiumPlant;
 import com.fluffy.admantium.items.AdmantiumShard;
 import com.fluffy.admantium.items.item.CalciteCrown;
 import com.fluffy.admantium.util.ADMMaterial;
@@ -24,7 +23,6 @@ import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -68,7 +66,9 @@ public class AdmantiumMain {
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
-
+		ITEMS.getEntries().forEach((r) -> {
+			System.out.println(r.getId().toString());
+		});
 	}
 
 	@SubscribeEvent
@@ -113,8 +113,9 @@ public class AdmantiumMain {
 			() -> new AdmantiumShard());
 	public static final RegistryObject<Item> MITIUM_CRYSTAL = ITEMS.register("mitium_crystal",
 			() -> new AdmantiumShard());
-	public static final RegistryObject<Block> MITIUM_PLANT = BLOCKS.register("mitium_plant",
-			() -> new MitiumPlant(Block.Properties.of(Material.PLANT).randomTicks()));
+	// public static final RegistryObject<Block> MITIUM_PLANT =
+	// BLOCKS.register("mitium_plant",
+	// () -> new MitiumPlant(Block.Properties.of(Material.PLANT).randomTicks()));
 
 	public static final RegistryObject<ArmorItem> CALCITE_CROEN = ITEMS.register("calcite_crown",
 			() -> new CalciteCrown(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC), EquipmentSlot.HEAD,

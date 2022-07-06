@@ -2,8 +2,6 @@ package com.fluffy.admantium.items;
 
 import java.util.Random;
 
-import com.fluffy.admantium.util.TooltipHandler;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +15,7 @@ public abstract class AdmItem extends Item implements IToolTip {
 
 	public AdmItem(Properties properties) {
 		super(properties);
-		TooltipHandler.registerTooltip(this);
+		// TooltipHandler.registerTooltip(this);
 
 	}
 

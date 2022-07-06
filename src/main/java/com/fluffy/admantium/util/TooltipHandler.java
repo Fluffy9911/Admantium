@@ -50,8 +50,6 @@ public class TooltipHandler {
 					gc.getTooltipElements().add(Either.left(FormattedText.of(item.getHighlightedDescription().getText(),
 							Style.EMPTY.withColor(item.getHighlightedDescription().getColor()))));
 
-					// float power = 0;
-
 				}
 			}
 

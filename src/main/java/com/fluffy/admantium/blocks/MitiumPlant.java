@@ -26,7 +26,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
 
 public class MitiumPlant extends CropBlock {
-	public static final IntegerProperty AGEE = BlockStateProperties.AGE_15;
+	public static final IntegerProperty AGEE = BlockStateProperties.AGE_7;
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] { Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
@@ -76,7 +76,7 @@ public class MitiumPlant extends CropBlock {
 
 	@Override
 	public int getMaxAge() {
-		return 15;
+		return 7;
 	}
 
 	@Override
